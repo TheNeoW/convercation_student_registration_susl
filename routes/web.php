@@ -19,14 +19,9 @@ use App\Http\Controllers\MailController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('welcome');
-
+Route::get('/', function () { 
+    return view('auth.login'); })->name('welcome');
 
 //Route::get('/', function () {
 //    return view('survey.create');
@@ -162,12 +157,5 @@ Route::post('/forget-password', '\App\Http\Controllers\Auth\ForgotPasswordContro
 Route::get('/reset-password/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm');
 Route::post('/reset-password', '\App\Http\Controllers\Auth\ResetPasswordController@reset');
 
-Route::get('/tab1',function (){
-    return view('home');
-});
-Route::get('/tab2',function (){
-    return view('home');
-});
-Route::get('/tab3',function (){
-    return view('home');
-});
+Route::get('/tab{number}', function () { 
+    return view('home'); })->where('number', '[1-3]');
